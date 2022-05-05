@@ -1,0 +1,80 @@
+#include "mat.h"
+#include "takuzu.h"
+
+
+GRID createMatrix(int size) {
+    
+    GRID matrix = (GRID) calloc(size, size * sizeof(CASE *));
+    int cpt = 0;
+
+    for (int i = 0; i < size; i++) {
+        *(matrix + i) = calloc(size, size * sizeof(CASE));
+    }
+
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            matrix[i][j].coords.posx = j;
+            matrix[i][j].coords.posy = i;
+        }
+    }
+
+    return matrix;
+}
+
+void freeMatrix(GRID * matrix, int size) {
+    for (int i = 0; i < size; ++i) {
+        free(*(*matrix + i));
+    }
+    free(*matrix);
+}
+
+void printMatrix(GAME game, int field) {
+    for (int i = 0; i < game.size; i++) {
+        for (int j = 0; j < game.size; j++) {
+            switch(field) {
+                case 0:
+                    printf("%d ", game.grid[i][j].content);
+                    break;
+                case 1:
+                    printf("%d ", game.grid[i][j].mask);
+                    break;
+                case 2:
+                    printf("%c ", game.grid[i][j].xor);
+                    break;
+                default:
+                    break;
+            }
+        }
+        printf("\n");
+    }
+}
+
+// Not used
+void printCase(CASE toPrint) {
+
+  printf("content: %d\nmask: %d\nxored: %d\n\nX: %d\nY: %d\n\n",
+    toPrint.content,
+    toPrint.mask,
+    toPrint.xor,
+    toPrint.coords.posx,
+    toPrint.coords.posy
+    );
+}
+
+GAME createGame(int size) {
+    GAME game;
+    GRID grid = createMatrix(size);
+
+    game.grid = grid;
+    game.size = size;
+
+    initRand();
+    generateMask(game);
+
+    return game;
+}
+
+void freeGame(GAME * game) {
+    freeMatrix(&game->grid, game->size);
+    free(game);
+}
