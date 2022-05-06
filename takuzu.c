@@ -68,13 +68,15 @@ bool isValid(GAME game, int posx, int posy, short proposition) {
         diffx = abs(toCheck[i].posx - posx);
         diffy = abs(toCheck[i].posy - posy);
         if(diffx <= 1 && diffy <= 1) {
-            adjacent[cptAdj++] = toCheck[i];
-            // printf("%d %d\n", toCheck[i].posx, toCheck[i].posy);
+            if(isInGrid(game.size, toCheck[i].posx, toCheck[i].posy)) {
+                adjacent[cptAdj++] = toCheck[i];
+                printf("%d %d\n", toCheck[i].posx, toCheck[i].posy);
+            }
         }
     }
 
     for (int i = 0; i < 4; ++i) {
-        if(proposition != game.grid[adjacent[i].posx][adjacent[i].posy].content) {
+        if(proposition != (game.grid[adjacent[i].posx][adjacent[i].posy]).content) {
             cptValid++;
         }
         if(cptValid == 4) {
