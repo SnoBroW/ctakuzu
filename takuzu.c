@@ -45,14 +45,19 @@ bool isValid(GAME game, int posx, int posy, short proposition) {
     int maxToCheck = game.size * 2 - 2,
     cptGeneral = 0,
     cptAdj = 0,
+    cptNotAdj = 0,
     cptValid = 0,
     diffx,
     diffy;
 
-    COORDINATES * toCheck = (COORDINATES *) malloc(maxToCheck * sizeof(COORDINATES));
-    COORDINATES * adjacent = (COORDINATES *) malloc(4 * sizeof(COORDINATES));
+    COORDINATES * toCheck = malloc(maxToCheck * sizeof(COORDINATES));
+    COORDINATES * adjacent = malloc(4 * sizeof(COORDINATES));
+    COORDINATES * notAdjacent = malloc((maxToCheck - 4) * sizeof(COORDINATES));
 
     if(!isInGrid(game.size, posx, posy)) {
+        free(toCheck);
+        free(adjacent);
+        free(notAdjacent);
         return false;
     }
 
@@ -68,10 +73,10 @@ bool isValid(GAME game, int posx, int posy, short proposition) {
         diffx = abs(toCheck[i].posx - posx);
         diffy = abs(toCheck[i].posy - posy);
         if(diffx <= 1 && diffy <= 1) {
-            if(isInGrid(game.size, toCheck[i].posx, toCheck[i].posy)) {
-                adjacent[cptAdj++] = toCheck[i];
-                printf("%d %d\n", toCheck[i].posx, toCheck[i].posy);
-            }
+            adjacent[cptAdj++] = toCheck[i];
+        }
+        else {
+            notAdjacent[cptNotAdj++] = toCheck[i];
         }
     }
 
@@ -79,14 +84,15 @@ bool isValid(GAME game, int posx, int posy, short proposition) {
         if(proposition != (game.grid[adjacent[i].posx][adjacent[i].posy]).content) {
             cptValid++;
         }
-        if(cptValid == 4) {
-            return true;
-        }
-        else {
-
-        }
-
     }
+    if(cptValid == 4) {
+            free(toCheck);
+            free(adjacent);
+            return true;
+    }
+
+    
+
 
     free(toCheck);
     free(adjacent);

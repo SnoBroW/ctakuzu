@@ -63,6 +63,7 @@ void printCase(CASE toPrint) {
 
 GAME createGame(int size) {
     GAME game;
+
     GRID grid = createMatrix(size);
 
     game.grid = grid;
@@ -76,5 +77,4 @@ GAME createGame(int size) {
 
 void freeGame(GAME * game) {
     freeMatrix(&game->grid, game->size);
-    free(game);
 }
