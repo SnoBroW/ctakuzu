@@ -2,7 +2,7 @@
 #include "takuzu.h"
 
 
-GRID createMatrix(int size) {
+GRID createGrid(int size) {
     
     GRID matrix = (GRID) calloc(size, size * sizeof(CASE *));
     int cpt = 0;
@@ -21,14 +21,15 @@ GRID createMatrix(int size) {
     return matrix;
 }
 
-void freeMatrix(GRID * matrix, int size) {
+void freeGrid(GRID * matrix, int size) {
     for (int i = 0; i < size; ++i) {
         free(*(*matrix + i));
     }
     free(*matrix);
 }
 
-void printMatrix(GAME game, int field) {
+
+void printGrid(GAME game, int field) {
     for (int i = 0; i < game.size; i++) {
         for (int j = 0; j < game.size; j++) {
             switch(field) {
@@ -49,7 +50,7 @@ void printMatrix(GAME game, int field) {
     }
 }
 
-// Not used
+
 void printCase(CASE toPrint) {
 
   printf("content: %d\nmask: %d\nxored: %d\n\nX: %d\nY: %d\n\n",
@@ -64,7 +65,7 @@ void printCase(CASE toPrint) {
 GAME createGame(int size) {
     GAME game;
 
-    GRID grid = createMatrix(size);
+    GRID grid = createGrid(size);
 
     game.grid = grid;
     game.size = size;
@@ -76,5 +77,5 @@ GAME createGame(int size) {
 }
 
 void freeGame(GAME * game) {
-    freeMatrix(&game->grid, game->size);
+    freeGrid(&game->grid, game->size);
 }

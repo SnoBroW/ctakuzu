@@ -1,7 +1,3 @@
-//
-// Created by Gabriel on 09/05/2022.
-//
-
 #ifndef PROJET_C_L1_GRIDS_H
 #define PROJET_C_L1_GRIDS_H
 

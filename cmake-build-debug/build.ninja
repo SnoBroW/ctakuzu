@@ -73,6 +73,12 @@ build CMakeFiles/projet_c_l1.dir/util.c.obj: C_COMPILER__projet_c_l1_Debug C$:/U
   OBJECT_DIR = CMakeFiles\projet_c_l1.dir
   OBJECT_FILE_DIR = CMakeFiles\projet_c_l1.dir
 
+build CMakeFiles/projet_c_l1.dir/io.c.obj: C_COMPILER__projet_c_l1_Debug C$:/Users/Gabriel/Desktop/projet_takuzu/io.c || cmake_object_order_depends_target_projet_c_l1
+  DEP_FILE = CMakeFiles\projet_c_l1.dir\io.c.obj.d
+  FLAGS = -g -std=gnu99
+  OBJECT_DIR = CMakeFiles\projet_c_l1.dir
+  OBJECT_FILE_DIR = CMakeFiles\projet_c_l1.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target projet_c_l1
@@ -81,7 +87,7 @@ build CMakeFiles/projet_c_l1.dir/util.c.obj: C_COMPILER__projet_c_l1_Debug C$:/U
 #############################################
 # Link the executable projet_c_l1.exe
 
-build projet_c_l1.exe: C_EXECUTABLE_LINKER__projet_c_l1_Debug CMakeFiles/projet_c_l1.dir/main.c.obj CMakeFiles/projet_c_l1.dir/mat.c.obj CMakeFiles/projet_c_l1.dir/takuzu.c.obj CMakeFiles/projet_c_l1.dir/util.c.obj
+build projet_c_l1.exe: C_EXECUTABLE_LINKER__projet_c_l1_Debug CMakeFiles/projet_c_l1.dir/main.c.obj CMakeFiles/projet_c_l1.dir/mat.c.obj CMakeFiles/projet_c_l1.dir/takuzu.c.obj CMakeFiles/projet_c_l1.dir/util.c.obj CMakeFiles/projet_c_l1.dir/io.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\projet_c_l1.dir

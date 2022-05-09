@@ -8,11 +8,11 @@
 #define MAT_H
 
 
-GRID createMatrix(int size);
+GRID createGrid(int size);
 
-void freeMatrix(GRID * matrix, int size);
+void freeGrid(GRID * matrix, int size);
 
-void printMatrix(GAME game, int field);
+void printGrid(GAME game, int field);
 // Used for debug only
 // Field designates the field to print
 // 0: content

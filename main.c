@@ -10,10 +10,8 @@ int main(int argc, char * argv[]) {
     GAME game = createGame(SIZE);
 
     fillGridWithMatrix(&game, grid2);
-
-    printMatrix(game, 0);
-
     printf("\n%d", isValid(game, 4, 5, 1));
+    printGrid(game, 0);
 
     freeGame(&game);
 
