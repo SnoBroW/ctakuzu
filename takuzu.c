@@ -55,13 +55,14 @@ bool isValid(GAME game, int posx, int posy, short proposition) {
 
     int cpt1 = 0, cpt0 = 0;
 
+    if (!isInGrid(game.size, posx, posy)) {
+
+        return false;
+    }
+
     COORDINATES * toCheckFirstRound = malloc(maxToCheck * sizeof(COORDINATES));
     COORDINATES * adjacent = malloc(4 * sizeof(COORDINATES));
     COORDINATES * toCheckSecondRound = malloc((maxToCheck - 4) * sizeof(COORDINATES));
-
-    if (!isInGrid(game.size, posx, posy)) {
-        rule2 = false;
-    }
 
     for (int i = 0; i < game.size; ++i) {
         for (int j = 0; j < game.size; ++j) {
