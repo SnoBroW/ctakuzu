@@ -10,3 +10,8 @@ void displayGrid(GAME game) {
         printf("\n");
     }
 }
+
+
+COORDINATES inputCoordinates() {
+
+}
