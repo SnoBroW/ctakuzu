@@ -27,8 +27,9 @@ void displayGrid(GAME game, bool helper, char none) {
 COORDINATES inputCoordinates() {
     char * buf = malloc(2);
 
-
     printf("\n>\t");
     getchar(); // juste pour être sur
     fgets(buf, 2, stdin);
+
+
 }
