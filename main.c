@@ -4,16 +4,17 @@
 #include "io.h"
 #include "grids.h"
 
-#define SIZE 4
+#define SIZE 16
 
 int main(int argc, char * argv[]) {
 
     GAME game = createGame(SIZE);
 
-    fillGridWithMatrix(&game, grid2);
-    // printf("\n%d", isValid(game, 4, 5, 1));
+    // fillGridWithMatrix(&game, grid2);
 
-    displayGrid(game);
+    displayGrid(game, true, '.');
+
+    inputCoordinates();
 
     freeGame(&game);
 
