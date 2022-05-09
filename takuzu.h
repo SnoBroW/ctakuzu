@@ -45,5 +45,7 @@ CASE getCaseByPos(GAME game, int posx, int posy);
 bool isValid(GAME game, int posx, int posy, short proposition);
 bool isInGrid(int size, int posx, int posy);
 
+void fillGridWithMatrix(GAME * game, short matrix[game->size][game->size]);
+
 
 #endif
