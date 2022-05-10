@@ -20,7 +20,6 @@ struct CASE {
 
 	short content;
 	short mask;
-	short xor;
 
     COORDINATES coords;
 };

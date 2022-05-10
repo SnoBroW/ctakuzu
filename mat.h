@@ -17,7 +17,6 @@ void printGrid(GAME game, int field);
 // Field designates the field to print
 // 0: content
 // 1: mask
-// 2: content and mask xor'd
 
 void printCase(CASE toPrint);
 
