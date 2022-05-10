@@ -50,5 +50,6 @@ COORDINATES inputCoordinates() {
         coords.posy = -1;
     }
 
+    free(buf);
     return coords;
 }

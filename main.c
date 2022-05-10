@@ -18,8 +18,6 @@ int main(int argc, char * argv[]) {
 
     CASE piss = getCaseByPos(game, coords.posx, coords.posy);
 
-    printCase(piss);
-
     freeGame(&game);
 
     return 0;
