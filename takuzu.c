@@ -24,11 +24,11 @@ void generateGrid(GAME game) {
 
 }
 
-CASE getCaseByPos(GAME game, int posx, int posy) {
+CASE * getCaseByPos(GAME game, int posx, int posy) {
     for (int i = 0; i < game.size; ++i) {
         for (int j = 0; j < game.size; ++j) {
             if(game.grid[i][j].coords.posx == posx && game.grid[i][j].coords.posy == posy) {
-                return game.grid[i][j];
+                return &game.grid[i][j];
             }
         }
     }

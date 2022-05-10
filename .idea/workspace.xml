@@ -13,6 +13,10 @@
   <component name="ChangeListManager">
     <list default="true" id="8d6c9438-e718-4874-be1c-899e24f7d164" name="Changes" comment="gros progrès wallah">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/io.c" beforeDir="false" afterPath="$PROJECT_DIR$/io.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/io.h" beforeDir="false" afterPath="$PROJECT_DIR$/io.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/takuzu.c" beforeDir="false" afterPath="$PROJECT_DIR$/takuzu.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +26,6 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -51,11 +54,11 @@
                 <list>
                   <RecentBranch>
                     <option name="branchName" value="dev" />
-                    <option name="lastUsedInstant" value="1652137799" />
+                    <option name="lastUsedInstant" value="1652202682" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="master" />
-                    <option name="lastUsedInstant" value="1652123481" />
+                    <option name="lastUsedInstant" value="1652202561" />
                   </RecentBranch>
                 </list>
               </option>
@@ -89,6 +92,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_MARK_IGNORED_FILES_AS_EXCLUDED" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
@@ -108,11 +112,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="projet_c_l1" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="projet_c_l1" TARGET_NAME="projet_c_l1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="projet_c_l1" RUN_TARGET_NAME="projet_c_l1">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -137,7 +136,8 @@
       <workItem from="1651770969059" duration="4649000" />
       <workItem from="1651790671420" duration="5007000" />
       <workItem from="1651846301638" duration="836000" />
-      <workItem from="1652123384044" duration="16268000" />
+      <workItem from="1652123384044" duration="15272000" />
+      <workItem from="1652203936407" duration="1000" />
     </task>
     <task id="LOCAL-00001" summary="1st commit">
       <created>1651792718080</created>
@@ -223,28 +223,7 @@
       <option name="project" value="LOCAL" />
       <updated>1652138171310</updated>
     </task>
-    <task id="LOCAL-00013" summary="ouais ouais c'est ça">
-      <created>1652140142630</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1652140142630</updated>
-    </task>
-    <task id="LOCAL-00014" summary="ouais ouais c'est ça">
-      <created>1652140367562</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1652140367562</updated>
-    </task>
-    <task id="LOCAL-00015" summary="gros progrès wallah">
-      <created>1652140422458</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1652140422458</updated>
-    </task>
-    <option name="localTasksCounter" value="16" />
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -261,7 +240,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="dev" />
                       </list>
                     </value>
                   </entry>
@@ -277,8 +256,7 @@
     <MESSAGE value="1st commit" />
     <MESSAGE value="en fait c'était le deuxième" />
     <MESSAGE value="ouais ouais c'est ça" />
-    <MESSAGE value="gros progrès wallah" />
-    <option name="LAST_COMMIT_MESSAGE" value="gros progrès wallah" />
+    <option name="LAST_COMMIT_MESSAGE" value="ouais ouais c'est ça" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

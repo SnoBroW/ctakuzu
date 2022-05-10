@@ -14,9 +14,13 @@ int main(int argc, char * argv[]) {
 
     displayGrid(game, true, '.');
 
-    COORDINATES coords = inputCoordinates();
+    COORDINATES * coords = inputCoordinates();
 
-    CASE piss = getCaseByPos(game, coords.posx, coords.posy);
+    CASE piss = getCaseByPos(game, coords->posx, coords->posy);
+
+    free(coords);
+
+    printCase(piss);
 
     freeGame(&game);
 
