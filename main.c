@@ -4,17 +4,21 @@
 #include "io.h"
 #include "grids.h"
 
-#define SIZE 16
+#define SIZE 4
 
 int main(int argc, char * argv[]) {
 
     GAME game = createGame(SIZE);
 
-    // fillGridWithMatrix(&game, grid2);
+    fillGridWithMatrix(&game, grid1);
 
     displayGrid(game, true, '.');
 
-    inputCoordinates();
+    COORDINATES coords = inputCoordinates();
+
+    CASE piss = getCaseByPos(game, coords.posx, coords.posy);
+
+    printCase(piss);
 
     freeGame(&game);
 

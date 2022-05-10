@@ -43,6 +43,11 @@ bool isInGrid(int size, int posx, int posy) {
 
 
 bool isValid(GAME game, int posx, int posy, short proposition) {
+    
+    if (!isInGrid(game.size, posx, posy)) {
+        return false;
+    }
+
     int maxToCheck = game.size * 2 - 2,
             cptGeneral = 0,
             cptAdj = 0,
@@ -54,11 +59,6 @@ bool isValid(GAME game, int posx, int posy, short proposition) {
     bool rule1 = true, rule2 = true, rule3 = true;
 
     int cpt1 = 0, cpt0 = 0;
-
-    if (!isInGrid(game.size, posx, posy)) {
-
-        return false;
-    }
 
     COORDINATES * toCheckFirstRound = malloc(maxToCheck * sizeof(COORDINATES));
     COORDINATES * adjacent = malloc(4 * sizeof(COORDINATES));

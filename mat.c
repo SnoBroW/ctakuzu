@@ -39,9 +39,6 @@ void printGrid(GAME game, int field) {
                 case 1:
                     printf("%d ", game.grid[i][j].mask);
                     break;
-                case 2:
-                    printf("%c ", game.grid[i][j].xor);
-                    break;
                 default:
                     break;
             }
@@ -53,10 +50,9 @@ void printGrid(GAME game, int field) {
 
 void printCase(CASE toPrint) {
 
-  printf("content: %d\nmask: %d\nxored: %d\n\nX: %d\nY: %d\n\n",
+  printf("content: %d\nmask: %d\n\nX: %d\nY: %d\n\n",
     toPrint.content,
     toPrint.mask,
-    toPrint.xor,
     toPrint.coords.posx,
     toPrint.coords.posy
     );
