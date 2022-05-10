@@ -50,11 +50,11 @@ void printGrid(GAME game, int field) {
 
 void printCase(CASE toPrint) {
 
-  printf("content: %d\nmask: %d\n\nX: %d\nY: %d\n\n",
+  printf("\ncontent: %d\nmask: %d\n\nY: %d\nX: %d\n\n",
     toPrint.content,
     toPrint.mask,
-    toPrint.coords.posx,
-    toPrint.coords.posy
+    toPrint.coords.posy,
+    toPrint.coords.posx
     );
 }
 

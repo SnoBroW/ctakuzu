@@ -24,32 +24,31 @@ void displayGrid(GAME game, bool helper, char none) {
 }
 
 
-COORDINATES * inputCoordinates() {
-    char * buf = malloc(2);
-
-    COORDINATES * coords = malloc(sizeof(COORDINATES));
+void inputCoordinates(COORDINATES * coords) {
+    char * buf = malloc(8);
 
     printf("\n>\t");
-    getchar(); // juste pour être sur
-    fgets(buf, 2, stdin);
+    fgets(buf, 3, stdin);
 
     if(buf[0] <= 122 && buf[0] >= 97) {
-        coords->posx = buf[0] - 97;
+        coords->posx = buf[0] - 'a';
     }
     else if(buf[0] <= 90 && buf[0] >= 65) {
-        coords->posx = buf[0] - 65;
+        coords->posx = buf[0] - 'A';
     }
     else {
         coords->posx = -1;
     }
 
     if(buf[1] <= 57 && buf[1] >= 48 ) {
-        coords->posy = buf[0] - 48;
+        coords->posy = buf[1] - '0';
     }
     else {
         coords->posy = -1;
     }
 
+    // coords->posx = (int) buf[0] - 'A';
+    // coords->posy = (int) buf[1] - '0';
+
     free(buf);
-    return coords;
 }
