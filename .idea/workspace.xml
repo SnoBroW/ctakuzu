@@ -11,8 +11,8 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d6c9438-e718-4874-be1c-899e24f7d164" name="Changes" comment="ouais ouais c'est ça">
-      <change beforePath="$PROJECT_DIR$/io.c" beforeDir="false" afterPath="$PROJECT_DIR$/io.c" afterDir="false" />
+    <list default="true" id="8d6c9438-e718-4874-be1c-899e24f7d164" name="Changes" comment="gros progrès wallah">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +137,7 @@
       <workItem from="1651770969059" duration="4649000" />
       <workItem from="1651790671420" duration="5007000" />
       <workItem from="1651846301638" duration="836000" />
-      <workItem from="1652123384044" duration="15597000" />
+      <workItem from="1652123384044" duration="16268000" />
     </task>
     <task id="LOCAL-00001" summary="1st commit">
       <created>1651792718080</created>
@@ -230,7 +230,21 @@
       <option name="project" value="LOCAL" />
       <updated>1652140142630</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="ouais ouais c'est ça">
+      <created>1652140367562</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1652140367562</updated>
+    </task>
+    <task id="LOCAL-00015" summary="gros progrès wallah">
+      <created>1652140422458</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1652140422458</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,7 +277,8 @@
     <MESSAGE value="1st commit" />
     <MESSAGE value="en fait c'était le deuxième" />
     <MESSAGE value="ouais ouais c'est ça" />
-    <option name="LAST_COMMIT_MESSAGE" value="ouais ouais c'est ça" />
+    <MESSAGE value="gros progrès wallah" />
+    <option name="LAST_COMMIT_MESSAGE" value="gros progrès wallah" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
