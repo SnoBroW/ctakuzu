@@ -2,22 +2,15 @@
 #include "takuzu.h"
 #include "util.h"
 #include "io.h"
-#include "grids.h"
 
 #define SIZE 4
 
 int main(int argc, char * argv[]) {
 
-    GAME game = createGame(SIZE);
+    
+    playGame(SIZE);
 
-    fillGridWithMatrix(&game, grid1);
 
-    displayGrid(game, true, '.');
-
-    COORDINATES coords;
-    inputCoordinates(&coords);
-
-    freeGame(&game);
 
     return 0;
 }

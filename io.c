@@ -1,10 +1,12 @@
 #include "takuzu.h"
 #include "mat.h"
 #include "util.h"
+#include "grids.h"
 
 #include <stdbool.h>
 
 void displayGrid(GAME game, bool helper, char none) {
+    printf("\n\n");
     if(helper) {
         printf("\\\t");
         for (int i = 0; i < game.size; ++i) {
@@ -51,4 +53,55 @@ void inputCoordinates(COORDINATES * coords) {
     // coords->posy = (int) buf[1] - '0';
 
     free(buf);
+}
+
+
+void inputContent(short * content) {
+    printf("\n>\t");
+    *content = (fgetc(stdin) - '0');
+}
+
+
+void proposition(GAME game) {
+
+
+
+}
+
+int inputSize() {
+
+}
+
+
+void multiChoiceMenu() {
+
+}
+
+
+
+void playGame(int size) {
+
+    GAME game = createGame(size);
+    COORDINATES coords;
+    fillGridWithMatrix(&game, grid1);
+
+    while(1) {
+
+        // FAIRE SAISIE SECURISEE AVEC ISINGRID()
+        // STP OUBLIE PAS
+
+        displayGrid(game, true, '.');
+        printf("\nPosition ?\nFormat: COLONNE/LIGNE");
+        inputCoordinates(&coords);
+        getchar();
+
+        game.grid[coords.posy][coords.posx].mask = 1;
+
+        printf("\nProposition?");
+        inputContent(&(game.grid[coords.posy][coords.posx].content));
+        getchar();
+    }
+
+
+    freeGame(&game);
 }
