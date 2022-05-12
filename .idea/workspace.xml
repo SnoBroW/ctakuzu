@@ -11,9 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d6c9438-e718-4874-be1c-899e24f7d164" name="Changes" comment="la passation">
-      <change afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="8d6c9438-e718-4874-be1c-899e24f7d164" name="Changes" comment="toujours segfault hein">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/takuzu.c" beforeDir="false" afterPath="$PROJECT_DIR$/takuzu.c" afterDir="false" />
     </list>
@@ -143,7 +141,7 @@
       <workItem from="1651846301638" duration="836000" />
       <workItem from="1652123384044" duration="15272000" />
       <workItem from="1652203936407" duration="32000" />
-      <workItem from="1652382644259" duration="589000" />
+      <workItem from="1652382644259" duration="2841000" />
     </task>
     <task id="LOCAL-00001" summary="1st commit">
       <created>1651792718080</created>
@@ -236,7 +234,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652203962360</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="toujours segfault hein">
+      <created>1652383511989</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1652383511989</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,13 +275,7 @@
     <MESSAGE value="en fait c'était le deuxième" />
     <MESSAGE value="ouais ouais c'est ça" />
     <MESSAGE value="la passation" />
-    <option name="LAST_COMMIT_MESSAGE" value="la passation" />
-  </component>
-  <component name="XDebuggerManager">
-    <watches-manager>
-      <configuration name="CMakeRunConfiguration">
-        <watch expression="*game.grid @ 4" />
-      </configuration>
-    </watches-manager>
+    <MESSAGE value="toujours segfault hein" />
+    <option name="LAST_COMMIT_MESSAGE" value="toujours segfault hein" />
   </component>
 </project>

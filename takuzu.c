@@ -169,6 +169,7 @@ bool isValid(GAME game, int posx, int posy, short proposition) {
     COORDINATES * toCheckFirstRound = malloc(maxToCheck * sizeof(COORDINATES));
     COORDINATES * adjacent = malloc(4 * sizeof(COORDINATES));
     COORDINATES * toCheckSecondRound = malloc((maxToCheck - 4) * sizeof(COORDINATES));
+    COORDINATES temp;
 
     for (int i = 0; i < game.size; ++i) {
         for (int j = 0; j < game.size; ++j) {
@@ -190,10 +191,9 @@ bool isValid(GAME game, int posx, int posy, short proposition) {
     for (int i = 0; i < sizeof(adjacent) / sizeof(COORDINATES); ++i) {
         if (proposition != game.grid[adjacent[i].posx][adjacent[i].posy].content) {
             cptValid++;
-        } else {
-            toCheckSecondRound[cptSecondRound++] = getCaseByPos(game, adjacent[i].posx - (posx - adjacent[i].posx),
-                                                                adjacent[i].posy -
-                                                                (posy - adjacent[i].posy)).coords;
+        }
+        else {
+            toCheckSecondRound[cptSecondRound++] = (getCaseByPos(game, adjacent[i].posx - (posx - adjacent[i].posx),adjacent[i].posy - (posy - adjacent[i].posy))).coords;
         }
     }
 
@@ -202,8 +202,10 @@ bool isValid(GAME game, int posx, int posy, short proposition) {
     }
 
     for (int i = 0; i < cptSecondRound; ++i) {
-        if (game.grid[toCheckSecondRound[i].posx][toCheckSecondRound[i].posy].content == proposition) {
-            rule2 = false;
+        if(isInGrid(game.size, toCheckSecondRound[i].posx, toCheckSecondRound[i].posy)) {
+            if(game.grid[toCheckSecondRound[i].posx][toCheckSecondRound[i].posy].content == proposition) {
+                rule2 = false;
+            }
         }
     }
 
