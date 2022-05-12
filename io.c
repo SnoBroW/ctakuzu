@@ -1,12 +1,13 @@
 #include "takuzu.h"
-#include "mat.h"
 #include "util.h"
-#include "grids.h"
+
 
 #include <stdbool.h>
+#include <string.h>
+
 
 void displayGrid(GAME game, bool helper, char none) {
-    printf("\n\n");
+    printf("\n");
     if(helper) {
         printf("\\\t");
         for (int i = 0; i < game.size; ++i) {
@@ -26,47 +27,69 @@ void displayGrid(GAME game, bool helper, char none) {
 }
 
 
+void printLives(short lives) {
+    printf("\nVies: ");
+    for (int i = 0; i < lives; ++i)
+    {
+        printf("❤ ");
+    }
+    printf("\n");
+}
+
+
 void inputCoordinates(COORDINATES * coords) {
     char * buf = malloc(8);
+    bool valid = true;
 
     printf("\n>\t");
-    fgets(buf, 3, stdin);
+    fgets(buf, 8, stdin);
 
-    if(buf[0] <= 122 && buf[0] >= 97) {
-        coords->posx = buf[0] - 'a';
+    strtok(buf, "\n");
+    strtok(buf, " ");
+
+    if(strlen(buf) < 2) {
+        valid = false;
     }
-    else if(buf[0] <= 90 && buf[0] >= 65) {
-        coords->posx = buf[0] - 'A';
+
+    if(valid) {
+        if(buf[0] <= 122 && buf[0] >= 97) {
+            coords->posx = buf[0] - 'a';
+        }
+        else if(buf[0] <= 90 && buf[0] >= 65) {
+            coords->posx = buf[0] - 'A';
+        }
+        else {
+            coords->posx = -1;
+        }
+
+        if(buf[1] <= 57 && buf[1] >= 48 ) {
+            coords->posy = buf[1] - '0';
+        }
+        else {
+            coords->posy = -1;
+        }
     }
     else {
         coords->posx = -1;
-    }
-
-    if(buf[1] <= 57 && buf[1] >= 48 ) {
-        coords->posy = buf[1] - '0';
-    }
-    else {
         coords->posy = -1;
     }
 
-    // coords->posx = (int) buf[0] - 'A';
-    // coords->posy = (int) buf[1] - '0';
 
     free(buf);
 }
 
-
-void inputContent(short * content) {
+short inputContent() {
+    
+    char input;
     printf("\n>\t");
-    *content = (fgetc(stdin) - '0');
+    input = (fgetc(stdin) - '0') % 2;
+    getchar();
+    // un peu débile mais ça marche
+    return input;
 }
 
 
-void proposition(GAME game) {
 
-
-
-}
 
 int inputSize() {
 
@@ -79,29 +102,3 @@ void multiChoiceMenu() {
 
 
 
-void playGame(int size) {
-
-    GAME game = createGame(size);
-    COORDINATES coords;
-    fillGridWithMatrix(&game, grid1);
-
-    while(1) {
-
-        // FAIRE SAISIE SECURISEE AVEC ISINGRID()
-        // STP OUBLIE PAS
-
-        displayGrid(game, true, '.');
-        printf("\nPosition ?\nFormat: COLONNE/LIGNE");
-        inputCoordinates(&coords);
-        getchar();
-
-        game.grid[coords.posy][coords.posx].mask = 1;
-
-        printf("\nProposition?");
-        inputContent(&(game.grid[coords.posy][coords.posx].content));
-        getchar();
-    }
-
-
-    freeGame(&game);
-}
