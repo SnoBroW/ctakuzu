@@ -121,6 +121,7 @@ CASE getCaseByPos(GAME game, int posx, int posy) {
         for (int j = 0; j < game.size; ++j) {
             if(game.grid[i][j].coords.posx == posx && game.grid[i][j].coords.posy == posy) {
                 return game.grid[i][j];
+
             }
         }
     }
@@ -145,7 +146,7 @@ void printIndice(bool rule1, bool rule2, bool rule3) {
         printf("\nDeux fois la même ligne / colonne !");
     }
 }
-A
+
 
 bool isValid(GAME game, int posx, int posy, short proposition) {
     

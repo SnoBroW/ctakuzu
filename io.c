@@ -1,7 +1,6 @@
 #include "takuzu.h"
 #include "util.h"
 
-
 #include <stdbool.h>
 #include <string.h>
 

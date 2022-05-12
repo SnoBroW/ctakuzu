@@ -29,7 +29,7 @@ void playGame(GAME game) {
             valid = false;
         }
 
-        if(!(game.grid[coords.posy][coords.posx].mask == 0)) {
+        if(game.grid[coords.posy][coords.posx].mask != 0) {
             valid = false;
         }
 
