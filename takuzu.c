@@ -133,6 +133,19 @@ bool isInGrid(int size, int posx, int posy) {
 // Pour Albane: opérateur ternaire, condition ? siVrai : siFaux
 
 
+void printIndice(bool rule1, bool rule2, bool rule3) {
+    printf("\n\n");
+    if(!rule1) {
+        printf("\nPas le même nombre de 0 et de 1 !");
+    }
+    if(!rule2) {
+        printf("\nPlus de deux chiffres égaux alignés !");
+    }
+    if(!rule3) {
+        printf("\nDeux fois la même ligne / colonne !");
+    }
+}
+
 
 bool isValid(GAME game, int posx, int posy, short proposition) {
     
@@ -228,12 +241,11 @@ bool isValid(GAME game, int posx, int posy, short proposition) {
         if((i == posx) && (memcmp(game.grid[i], game.grid[posx], sizeof(CASE) * game.size) != 0)) {
             rule3 = false;
         }
-        else {
-            rule3 = true;
-        }
     }
 
     // LET ME THINK...
+
+    printIndice(rule1, rule2, rule3);
 
     return rule1 && rule2 && rule3;
 

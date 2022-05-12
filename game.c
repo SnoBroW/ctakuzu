@@ -36,12 +36,17 @@ void playGame(GAME game) {
         if(valid) {
             printf("\nProposition ?");
             proposition = inputContent();
-            if(proposition == game.grid[coords.posy][coords.posx].content) {
+            if(isValid(game, coords.posy, coords.posx, proposition)) {
+                if(proposition == game.grid[coords.posy][coords.posx].content) {
                 game.grid[coords.posy][coords.posx].content = proposition;
                 game.grid[coords.posy][coords.posx].mask = 1;
+                }
+                else {
+                    printf("\n\nCoup incorrect !\n");
+                }
             }
             else {
-                printf("\n\nNon!\n");
+                printf("\n\nCoup invalide !\n");
                 lives--;
             }
         } 
