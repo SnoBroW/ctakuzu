@@ -35,7 +35,6 @@ GRID createGridFromMatrix(int size, short matrix[size][size]) {
 }
 
 
-
 void freeGrid(GRID * matrix, int size) {
     for (int i = 0; i < size; ++i) {
         free(*(*matrix + i));
@@ -240,14 +239,6 @@ bool isValid(GAME game, int posx, int posy, short proposition) {
 
 }
 
-
-void fillGridWithMatrix(GAME * game, short matrix[game->size][game->size]) {
-    for (int i = 0; i < game->size; ++i) {
-        for (int j = 0; j < game->size; ++j) {
-            game->grid[i][j].content = matrix[i][j];
-        }
-    }
-}
 
 
 // rules:
