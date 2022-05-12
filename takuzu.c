@@ -145,7 +145,7 @@ void printIndice(bool rule1, bool rule2, bool rule3) {
         printf("\nDeux fois la même ligne / colonne !");
     }
 }
-
+A
 
 bool isValid(GAME game, int posx, int posy, short proposition) {
     
