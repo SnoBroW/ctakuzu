@@ -117,7 +117,6 @@ int multiChoiceMenu(char * elements[], int size, bool title, bool retour) {
     else {
         return -1;
     }
-
 }
 
 int inputSize() {
@@ -150,12 +149,10 @@ void mainMenu() {
                 game = createGame(inputSize());
                 switch (multiChoiceMenu(playElements, 5, true, true)) {
                     case 1:
-                        freeGrid(&(game.grid), game.size);
                         game.grid = createGridFromMatrix(game.size, grid1);
                         printf("\n\n%s\n\n", isValidGrid(game.grid, game.size) ? "true" : "false");
                         break;
                     case 2:
-                        freeGrid(&(game.grid), game.size);
                         switch (game.size) {
                             case 4:
                                 game.grid = createGridFromMatrix(game.size, grid1);
@@ -168,7 +165,6 @@ void mainMenu() {
                                 break;
                         }
 
-
                         generateMask(game);
                         printf("Masque:\n");
                         printGrid(game, 1);
@@ -177,7 +173,6 @@ void mainMenu() {
                         freeGame(&game);
                         break;
                     case 3:
-                        freeGrid(&(game.grid), game.size);
                         game.grid = createGridFromMatrix(game.size, grid1);
 
                         generateMask(game);

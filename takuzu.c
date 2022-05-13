@@ -80,13 +80,7 @@ GAME createGame(int size) {
         size = 4;
     }
 
-    GRID grid = createGrid(size);
-
-    game.grid = grid;
     game.size = size;
-
-    initRand();
-    generateMask(game);
 
     return game;
 }
@@ -108,6 +102,8 @@ void solveGrid(GAME game) {
             grid[i][j].coords.posy = j;
         }
     }
+
+
 
     freeGrid(&grid, game.size);
 }
@@ -143,7 +139,7 @@ bool isInGrid(int size, int posx, int posy) {
 // Pour Albane: opérateur ternaire, condition ? siVrai : siFaux
 
 
-void printRegle(bool rule1, bool rule2, bool rule3) {
+void printRule(bool rule1, bool rule2, bool rule3) {
     printf("\n\n");
     if(!rule1) {
         printf("\nPas le même nombre de 0 et de 1 !");
@@ -213,10 +209,8 @@ bool isValidCoup(GAME game, int posx, int posy, short proposition) {
     }
 
     for (int i = 0; i < cptSecondRound; ++i) {
-        if(isInGrid(game.size, toCheckSecondRound[i].posx, toCheckSecondRound[i].posy)) {
-            if(game.grid[toCheckSecondRound[i].posx][toCheckSecondRound[i].posy].content == proposition) {
-                rule2 = false;
-            }
+        if (game.grid[toCheckSecondRound[i].posx][toCheckSecondRound[i].posy].content == proposition) {
+            rule2 = false;
         }
     }
 
@@ -279,7 +273,7 @@ bool isValidCoup(GAME game, int posx, int posy, short proposition) {
 
     // LET ME THINK...
 
-    printRegle(rule1, rule2, rule3);
+    printRule(rule1, rule2, rule3);
 
     return rule1 && rule2 && rule3;
 }
@@ -386,7 +380,6 @@ bool isValidGrid(GRID grid, int size) {
 // 1- same amount of ones and zeroes in one line / column
 // 2- max two of the same number in a row
 // 3- lines cant be the same
-
 
 
 COUP * initListCoup(PROPOSITION proposotion) {
