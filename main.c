@@ -8,16 +8,18 @@
 
 int main(int argc, char * argv[]) {
 
+    printBanner();
+    GAME game = createGame(inputSize());
     
-    GAME game = createGame(SIZE);
-    
-    freeGrid(&game.grid, game.size);
-    game.grid = createGridFromMatrix(SIZE, grid1);
+/*    freeGrid(&game.grid, game.size);
+    game.grid = createGridFromMatrix(SIZE, grid1);*/
     
     generateMask(game);
-
     playGame(game);
     freeGame(&game);
+
+
+
 
     return 0;
 }

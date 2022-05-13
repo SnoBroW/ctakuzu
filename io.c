@@ -25,7 +25,6 @@ void displayGrid(GAME game, bool helper, char none) {
     }
 }
 
-
 void printLives(short lives) {
     printf("\nVies: ");
     for (int i = 0; i < lives; ++i)
@@ -34,7 +33,6 @@ void printLives(short lives) {
     }
     printf("\n");
 }
-
 
 void inputCoordinates(COORDINATES * coords) {
     char * buf = malloc(8);
@@ -72,32 +70,67 @@ void inputCoordinates(COORDINATES * coords) {
         coords->posx = -1;
         coords->posy = -1;
     }
-
-
     free(buf);
 }
 
 short inputContent() {
     
-    char input;
+    int input;
     printf("\n>\t");
     input = (fgetc(stdin) - '0') % 2;
     getchar();
     // un peu débile mais ça marche
-    return input;
+    return (short) input;
 }
 
 
+int multiChoiceMenu(char * elements[], int size) {
+    int choice;
+    printf("%s\n\n", elements[0]);
 
+    for (int i = 1; i < size; ++i) {
+        printf("[%d] -\t%s\n", i, elements[i]);
+    }
+
+    printf("\n>\t");
+    choice = (fgetc(stdin) - '0');
+    fflush(stdin); // pas censé marcher mais ça marche
+    if((choice < size) && (choice > 0)) {
+        return choice;
+    }
+    else {
+        return -1;
+    }
+
+}
 
 int inputSize() {
+    char * elements[] = {"Choisissez la taille:", "4x4", "8x8", "16x16"};
+    switch(multiChoiceMenu(elements, 4)) {
+        case -1:
+            printf("Erreur taille invalide, 4x4 séléctionnée par défaut\n");
+            return -1;
+        case 1:
+            return 4;
+        case 2:
+            return 8;
+        case 3:
+            return 16;
+        default:
+            return -1;
+    }
+}
+
+void mainMenu() {
 
 }
 
 
-void multiChoiceMenu() {
-
+void printBanner() {
+    // j'étais obligé c'est trop cool
+    printf(" _______ _______ _______ _     _ _     _ ______ _     _\n"
+           " |          |    |_____| |____/  |     |  ____/ |     |\n"
+           " |_____     |    |     | |    \\_ |_____| /_____ |_____|\n");
+    printf("########################################################\n\n");
 }
-
-
 

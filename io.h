@@ -10,6 +10,7 @@ void multiChoiceMenu();
 int inputSize();
 short inputContent();
 void printLives(short lives);
-
+void multiChoiceMenu(char * elements[]);
+void printBanner();
 
 #endif //PROJET_C_L1_IO_H

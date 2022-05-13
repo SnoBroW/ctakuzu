@@ -4,7 +4,7 @@
 
 
 GRID createGrid(int size) {
-    
+
     GRID matrix = (GRID) calloc(size, size * sizeof(CASE *));
 
     for (int i = 0; i < size; i++) {
@@ -19,6 +19,7 @@ GRID createGrid(int size) {
     }
 
     return matrix;
+
 }
 
 GRID createGridFromMatrix(int size, short matrix[size][size]) {
@@ -74,6 +75,10 @@ void printCase(CASE toPrint) {
 
 GAME createGame(int size) {
     GAME game;
+
+    if(size == -1){
+        size = 4;
+    }
 
     GRID grid = createGrid(size);
 
