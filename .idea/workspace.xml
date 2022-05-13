@@ -11,8 +11,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d6c9438-e718-4874-be1c-899e24f7d164" name="Changes" comment="le menu va pas trop mal mais maintenant faut faire le solveur et je pense que ça ne va pas être de tout repos">
-      <change beforePath="$PROJECT_DIR$/takuzu.c" beforeDir="false" afterPath="$PROJECT_DIR$/takuzu.c" afterDir="false" />
+    <list default="true" id="8d6c9438-e718-4874-be1c-899e24f7d164" name="Changes" comment="la même sauf que j'avais oublié de changer un truc dans fonction débile avec la matrice qui tourne là">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grids.h" beforeDir="false" afterPath="$PROJECT_DIR$/grids.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/io.c" beforeDir="false" afterPath="$PROJECT_DIR$/io.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -245,7 +247,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652427211417</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="la même sauf que j'avais oublié de changer un truc dans fonction débile avec la matrice qui tourne là">
+      <created>1652427369419</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1652427369419</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -282,6 +291,7 @@
     <MESSAGE value="toujours segfault hein" />
     <MESSAGE value="CA SEGFAULT PLUS UHDGFQZUYHFZAGEFPOIUSHRBEGGPIUYSERGVPOIUYFGBSEDG" />
     <MESSAGE value="le menu va pas trop mal mais maintenant faut faire le solveur et je pense que ça ne va pas être de tout repos" />
-    <option name="LAST_COMMIT_MESSAGE" value="le menu va pas trop mal mais maintenant faut faire le solveur et je pense que ça ne va pas être de tout repos" />
+    <MESSAGE value="la même sauf que j'avais oublié de changer un truc dans fonction débile avec la matrice qui tourne là" />
+    <option name="LAST_COMMIT_MESSAGE" value="la même sauf que j'avais oublié de changer un truc dans fonction débile avec la matrice qui tourne là" />
   </component>
 </project>

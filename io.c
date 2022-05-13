@@ -147,21 +147,39 @@ void mainMenu() {
     while(true) {
         switch(multiChoiceMenu(mainElements, 4, false, true)) {
             case 1:
-                size = inputSize();
-                game = createGame(size);
+                game = createGame(inputSize());
                 switch (multiChoiceMenu(playElements, 5, true, true)) {
                     case 1:
                         printf("WIP\n");
                         break;
                     case 2:
+                        freeGrid(&(game.grid), game.size);
+                        switch (game.size) {
+                            case 4:
+                                game.grid = createGridFromMatrix(game.size, grid1);
+                                break;
+                            case 8:
+                                game.grid = createGridFromMatrix(game.size, grid2);
+                                break;
+                            case 16:
+                                game.grid = createGridFromMatrix(game.size, grid3);
+                                break;
+                        }
+
+
                         generateMask(game);
                         printf("Masque:\n");
                         printGrid(game, 1);
+
                         playGame(game);
                         freeGame(&game);
                         break;
                     case 3:
+                        freeGrid(&(game.grid), game.size);
+                        game.grid = createGridFromMatrix(game.size, grid1);
+
                         generateMask(game);
+
                         playGame(game);
                         freeGame(&game);
                         break;

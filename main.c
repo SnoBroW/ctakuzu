@@ -9,14 +9,6 @@ int main(int argc, char * argv[]) {
 
     printBanner();
     mainMenu();
-    
-/*    freeGrid(&game.grid, game.size);
-    game.grid = createGridFromMatrix(SIZE, grid1);*/
-    
-
-
-
-
 
     return 0;
 }
