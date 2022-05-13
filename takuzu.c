@@ -299,44 +299,12 @@ bool isValidGrid(GRID grid, int size) {
 
     for (int i = 0; i < size; ++i) {
         for (int j = 0; j < size; ++j) {
-            if(grid[i][j].content == 1){
-                cpt1++;
-                cpt0 = 0;
-            }
-            else {
-                cpt0++;
-                cpt1 = 0;
-            }
-            if(cpt1 > 2 || cpt0 > 2) {
-                rule1 = false;
-            }
-        }
-    }
-
-    for (int i = 0; i < size; ++i) {
-        for (int j = 0; j < size; ++j) {
-            if(rotatedGrid[i][j] == 1){
-                cpt1++;
-                cpt0 = 0;
-            }
-            else {
-                cpt0++;
-                cpt1 = 0;
-            }
-            if(cpt1 > 2 || cpt0 > 2) {
-                rule1 = false;
-            }
-        }
-    }
-
-
-    for (int i = 0; i < size; ++i) {
-        for (int j = 0; j < size; ++j) {
-            if(grid[i][j].content == 1) {
+            if (grid[i][j].content == 1) {
                 cpt++;
             }
         }
-        rule2 = cpt == size / 2 ? true : false;
+        rule1 = cpt == size / 2 ? true : false;
+        cpt = 0;
     }
 
     cpt = 0;
@@ -347,20 +315,59 @@ bool isValidGrid(GRID grid, int size) {
                 cpt++;
             }
         }
-        rule2 = cpt == size / 2 ? true : false;
+        rule1 = cpt == size / 2 ? true : false;
+        cpt = 0;
+    }
+
+
+    for (int i = 0; i < size; ++i) {
+        for (int j = 0; j < size; ++j) {
+            printf("\n%d", grid[i][j].content);
+            if(grid[i][j].content == 1){
+                cpt1++;
+                cpt0 = 0;
+            }
+            else {
+                cpt0++;
+                cpt1 = 0;
+            }
+            if(cpt1 > 2 || cpt0 > 2) {
+                rule2 = false;
+            }
+        }
+        printf("\n");
     }
 
     for (int i = 0; i < size; ++i) {
         for (int j = 0; j < size; ++j) {
-            if(memcmp(grid[i], grid[j], sizeof(CASE) * size) != 0) {
+            if(rotatedGrid[i][j] == 1){
+                cpt0 = 0;
+                cpt1++;
+            }
+            else {
+                cpt1 = 0;
+                cpt0++;
+            }
+        }
+        if(cpt1 > 2 || cpt0 > 2) {
+            rule2 = false;
+        }
+        cpt0 = 0;
+        cpt1 = 0;
+    }
+
+
+    for (int i = 0; i < size; ++i) {
+        for (int j = i; j < size; ++j) {
+            if(i != j && memcmp(grid[i], grid[j], sizeof(CASE) * size) == 0) {
                 rule3 = false;
             }
         }
     }
 
     for (int i = 0; i < size; ++i) {
-        for (int j = 0; j < size; ++j) {
-            if(memcmp(rotatedGrid[i], rotatedGrid[j], sizeof(CASE) * size) != 0) {
+        for (int j = i; j < size; ++j) {
+            if(i != j && memcmp(rotatedGrid[i], rotatedGrid[j], sizeof(CASE) * size) == 0) {
                 rule3 = false;
             }
         }
