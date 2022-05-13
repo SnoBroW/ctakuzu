@@ -36,7 +36,7 @@ void playGame(GAME game) {
         if(valid) {
             printf("\nProposition ?");
             proposition = inputContent();
-            if(isValid(game, coords.posy, coords.posx, proposition)) {
+            if(isValidCoup(game, coords.posy, coords.posx, proposition)) {
                 if(proposition == game.grid[coords.posy][coords.posx].content) {
                 game.grid[coords.posy][coords.posx].content = proposition;
                 game.grid[coords.posy][coords.posx].mask = 1;

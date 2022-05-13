@@ -97,8 +97,19 @@ void freeGame(GAME * game) {
 
 
 
-void solveGrid(GRID grid) {
+void solveGrid(GAME game) {
+    GRID grid = malloc(game.size * sizeof(CASE *));
+    for (int i = 0; i < game.size; ++i) {
+        grid[i] = malloc(game.size * sizeof(CASE));
+        for (int j = 0; j < game.size; ++j) {
+            grid[i][j].content = game.grid[i][j].content;
+            grid[i][j].mask = game.grid[i][j].mask;
+            grid[i][j].coords.posx = i;
+            grid[i][j].coords.posy = j;
+        }
+    }
 
+    freeGrid(&grid, game.size);
 }
 
 void generateMask(GAME game) {
@@ -132,7 +143,7 @@ bool isInGrid(int size, int posx, int posy) {
 // Pour Albane: opérateur ternaire, condition ? siVrai : siFaux
 
 
-void printIndice(bool rule1, bool rule2, bool rule3) {
+void printRegle(bool rule1, bool rule2, bool rule3) {
     printf("\n\n");
     if(!rule1) {
         printf("\nPas le même nombre de 0 et de 1 !");
@@ -146,7 +157,7 @@ void printIndice(bool rule1, bool rule2, bool rule3) {
 }
 
 
-bool isValid(GAME game, int posx, int posy, short proposition) {
+bool isValidCoup(GAME game, int posx, int posy, short proposition) {
     
     if (!isInGrid(game.size, posx, posy)) {
         return false;
@@ -268,15 +279,157 @@ bool isValid(GAME game, int posx, int posy, short proposition) {
 
     // LET ME THINK...
 
-    printIndice(rule1, rule2, rule3);
+    printRegle(rule1, rule2, rule3);
 
     return rule1 && rule2 && rule3;
-
 }
 
+bool isValidGrid(GRID grid, int size) {
+    bool rule1 = true, rule2 = true, rule3 = true;
+    short ** rotatedGrid;
+    int cpt = 0, cpt0 = 0, cpt1 = 0;
 
+    rotatedGrid = malloc(size * size * sizeof(short));
+    for (int i = 0; i < size; ++i) {
+        rotatedGrid[i] = malloc(size * sizeof(short));
+        for (int j = 0; j < size; ++j) {
+            rotatedGrid[i][j] = grid[j][i].content;
+        }
+    }
+
+    for (int i = 0; i < size; ++i) {
+        for (int j = 0; j < size; ++j) {
+            if(grid[i][j].content == 1){
+                cpt1++;
+                cpt0 = 0;
+            }
+            else {
+                cpt0++;
+                cpt1 = 0;
+            }
+            if(cpt1 > 2 || cpt0 > 2) {
+                rule1 = false;
+            }
+        }
+    }
+
+    for (int i = 0; i < size; ++i) {
+        for (int j = 0; j < size; ++j) {
+            if(rotatedGrid[i][j] == 1){
+                cpt1++;
+                cpt0 = 0;
+            }
+            else {
+                cpt0++;
+                cpt1 = 0;
+            }
+            if(cpt1 > 2 || cpt0 > 2) {
+                rule1 = false;
+            }
+        }
+    }
+
+
+    for (int i = 0; i < size; ++i) {
+        for (int j = 0; j < size; ++j) {
+            if(grid[i][j].content == 1) {
+                cpt++;
+            }
+        }
+        rule2 = cpt == size / 2 ? true : false;
+    }
+
+    cpt = 0;
+
+    for (int i = 0; i < size; ++i) {
+        for (int j = 0; j < size; ++j) {
+            if(rotatedGrid[i][j] == 1) {
+                cpt++;
+            }
+        }
+        rule2 = cpt == size / 2 ? true : false;
+    }
+
+    for (int i = 0; i < size; ++i) {
+        for (int j = 0; j < size; ++j) {
+            if(memcmp(grid[i], grid[j], sizeof(CASE) * size) != 0) {
+                rule3 = false;
+            }
+        }
+    }
+
+    for (int i = 0; i < size; ++i) {
+        for (int j = 0; j < size; ++j) {
+            if(memcmp(rotatedGrid[i], rotatedGrid[j], sizeof(CASE) * size) != 0) {
+                rule3 = false;
+            }
+        }
+    }
+
+    for (int i = 0; i < size; ++i) {
+        free(rotatedGrid[i]);
+    }
+
+    free(rotatedGrid);
+
+    return rule1 && rule2 && rule3;
+}
 
 // rules:
 // 1- same amount of ones and zeroes in one line / column
 // 2- max two of the same number in a row
 // 3- lines cant be the same
+
+
+
+COUP * initListCoup(PROPOSITION proposotion) {
+    LL list = NULL;
+    COUP * coup = malloc(sizeof(COUP));
+    coup->proposotion = proposotion;
+    coup->next = NULL;
+    list = coup;
+    return list;
+}
+
+void appendCoup(PROPOSITION proposotion, LL list) {
+    COUP * coup = malloc(sizeof(COUP));
+    coup->proposotion = proposotion;
+    coup->next = NULL;
+    if(list == NULL) {
+        list = coup;
+    }
+    else {
+        COUP * tmp = list;
+        while(tmp->next != NULL) {
+            tmp = tmp->next;
+        }
+        tmp->next = coup;
+    }
+}
+
+void popTailCoup(LL list) {
+    if(list != NULL) {
+        if(list->next == NULL) {
+            free(list);
+            list = NULL;
+        }
+        else {
+            COUP * tmp = list;
+            COUP * ptmp = NULL;
+            while(tmp->next != NULL) {
+                ptmp = tmp;
+                tmp = tmp->next;
+            }
+            ptmp->next = NULL;
+            free(ptmp);
+        }
+    }
+}
+
+// only for debug
+void printCoups(LL list) {
+    while(list != NULL) {
+        printf("%d @ %d %d\n", list->proposotion.content, list->proposotion.coords.posx, list->proposotion.coords.posy);
+        list = list->next;
+    }
+}

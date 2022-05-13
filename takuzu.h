@@ -4,38 +4,56 @@
 
 #include "util.h"
 
+#define UNKNOWN -1
 
 #ifndef TAKUZU_H
 #define TAKUZU_H
 
 
-typedef struct {
+struct COORDINATES {
     int posx;
     int posy;
-} COORDINATES;
+};
 
-typedef struct {
+typedef struct COORDINATES COORDINATES;
 
+struct PROPOSITION {
+    COORDINATES coords;
+    short content;
+};
+
+typedef struct PROPOSITION PROPOSITION;
+
+struct CASE {
 	short content;
 	short mask;
-
     COORDINATES coords;
-} CASE;
+};
 
+typedef struct CASE CASE;
 typedef struct CASE** GRID;
 
-typedef struct {
+struct GAME{
 	GRID grid;
 	int size;
-} GAME;
+};
 
-typedef struct {
-    
+typedef struct GAME GAME;
 
-} MAILLON;
+struct COUP{
+    PROPOSITION proposotion;
+    struct COUP* next;
+};
 
+typedef struct COUP COUP;
+typedef struct COUP* LL;
 
+struct LOTO {
+    COORDINATES coords;
+    struct LOTO* next;
+};
 
+typedef struct LOTO LOTO;
 
 
 GRID createGrid(int size);
@@ -44,7 +62,6 @@ GRID createGridFromMatrix(int size, short matrix[size][size]);
 void freeGrid(GRID * matrix, int size);
 
 void printGrid(GAME game, int field);
-// Used for debug only
 // Field designates the field to print
 // 0: content
 // 1: mask
@@ -57,14 +74,21 @@ void freeGame(GAME * game);
 GAME initGame(GAME game, GRID grid);
 
 
-void solveGrid(GRID);
+void solveGrid(GAME);
 void generateMask(GAME);
 void generateGrid(GAME);
 
 CASE getCaseByPos(GAME game, int posx, int posy);
 
-bool isValid(GAME game, int posx, int posy, short proposition);
+bool isValidCoup(GAME game, int posx, int posy, short proposition);
+bool isValidGrid(GRID grid, int size);
 bool isInGrid(int size, int posx, int posy);
+
+
+COUP * initListCoup(PROPOSITION proposotion);
+void appendCoup(PROPOSITION proposotion, LL list);
+void popTailCoup(LL list);
+void printCoups(LL list);
 
 
 
