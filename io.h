@@ -6,11 +6,11 @@
 
 void displayGrid(GAME game, bool helper, char none);
 void inputCoordinates(COORDINATES * coords);
-void multiChoiceMenu();
 int inputSize();
 short inputContent();
 void printLives(short lives);
-void multiChoiceMenu(char * elements[]);
+void multiChoiceMenu(char * elements[], int size, bool title, bool retour);
 void printBanner();
+void mainMenu();
 
 #endif //PROJET_C_L1_IO_H

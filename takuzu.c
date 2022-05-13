@@ -171,6 +171,8 @@ bool isValid(GAME game, int posx, int posy, short proposition) {
 
     int cpt1 = 0, cpt0 = 0;
 
+    short ** rotatedGrid;
+
     COORDINATES * toCheckFirstRound = malloc(maxToCheck * sizeof(COORDINATES));
     COORDINATES * adjacent = malloc(4 * sizeof(COORDINATES));
     COORDINATES * toCheckSecondRound = malloc((maxToCheck - 4) * sizeof(COORDINATES));
@@ -245,11 +247,31 @@ bool isValid(GAME game, int posx, int posy, short proposition) {
         rule1 = false;
     }
 
+    rotatedGrid = malloc(game.size * game.size * sizeof(short));
+    for (int i = 0; i < game.size; ++i) {
+        rotatedGrid[i] = malloc(game.size * sizeof(short));
+        for (int j = 0; j < game.size; ++j) {
+            rotatedGrid[i][j] = game.grid[j][i].content;
+        }
+    }
+
     for (int i = 0; i < game.size; ++i) {
         if((i == posx) && (memcmp(game.grid[i], game.grid[posx], sizeof(CASE) * game.size) != 0)) {
             rule3 = false;
         }
     }
+
+    for (int i = 0; i < game.size; ++i) {
+        if((i == posy) && (memcmp(game.grid[i], game.grid[posy], sizeof(CASE) * game.size) != 0)) {
+            rule3 = false;
+        }
+    }
+
+    for (int i = 0; i < game.size; ++i) {
+        free(rotatedGrid[i]);
+    }
+
+    free(rotatedGrid);
 
     // LET ME THINK...
 

@@ -1,5 +1,7 @@
 #include "takuzu.h"
 #include "util.h"
+#include "game.h"
+#include "grids.h"
 
 #include <stdbool.h>
 #include <string.h>
@@ -84,18 +86,32 @@ short inputContent() {
 }
 
 
-int multiChoiceMenu(char * elements[], int size) {
+int multiChoiceMenu(char * elements[], int size, bool title, bool retour) {
     int choice;
-    printf("%s\n\n", elements[0]);
+    size = retour ? size - 1 : size;
 
-    for (int i = 1; i < size; ++i) {
-        printf("[%d] -\t%s\n", i, elements[i]);
+    if(title) {
+        printf("%s\n\n", elements[0]);
+        for (int i = 1; i < size; ++i) {
+            printf("[%d] -\t%s\n", i, elements[i]);
+        }
+    }
+    else {
+        printf("\n\n");
+        for (int i = 0; i < size; ++i) {
+            printf("[%d] -\t%s\n", i + 1, elements[i]);
+        }
+    }
+
+    if(retour) {
+        printf("\n[0] -\t%s\n", elements[size]);
     }
 
     printf("\n>\t");
     choice = (fgetc(stdin) - '0');
+    getchar();
     fflush(stdin); // pas censé marcher mais ça marche
-    if((choice < size) && (choice > 0)) {
+    if((choice < size) && (choice >= 0)) {
         return choice;
     }
     else {
@@ -106,7 +122,7 @@ int multiChoiceMenu(char * elements[], int size) {
 
 int inputSize() {
     char * elements[] = {"Choisissez la taille:", "4x4", "8x8", "16x16"};
-    switch(multiChoiceMenu(elements, 4)) {
+    switch(multiChoiceMenu(elements, 4, true, false)) {
         case -1:
             printf("Erreur taille invalide, 4x4 séléctionnée par défaut\n");
             return -1;
@@ -123,6 +139,48 @@ int inputSize() {
 
 void mainMenu() {
 
+    GAME game;
+    int size;
+    char * mainElements[] = {"Jouer", "Résoudre", "Générer", "Quitter"};
+    char * playElements[] = {"Mode de jeu:", "Masque manuel", "Masque aléatoire", "Entraînement", "Retour"};
+
+    while(true) {
+        switch(multiChoiceMenu(mainElements, 4, false, true)) {
+            case 1:
+                size = inputSize();
+                game = createGame(size);
+                switch (multiChoiceMenu(playElements, 5, true, true)) {
+                    case 1:
+                        printf("WIP\n");
+                        break;
+                    case 2:
+                        generateMask(game);
+                        printf("Masque:\n");
+                        printGrid(game, 1);
+                        playGame(game);
+                        freeGame(&game);
+                        break;
+                    case 3:
+                        generateMask(game);
+                        playGame(game);
+                        freeGame(&game);
+                        break;
+                    case 0:
+                        break;
+                }
+                break;
+
+            case 2:
+                break;
+            case 3:
+                break;
+            case 0:
+                printf("\nSortie...\n\n");
+                exit(0);
+
+        }
+    }
+
 }
 
 
@@ -130,7 +188,6 @@ void printBanner() {
     // j'étais obligé c'est trop cool
     printf(" _______ _______ _______ _     _ _     _ ______ _     _\n"
            " |          |    |_____| |____/  |     |  ____/ |     |\n"
-           " |_____     |    |     | |    \\_ |_____| /_____ |_____|\n");
-    printf("########################################################\n\n");
+           " |_____     |    |     | |    \\_ |_____| /_____ |_____|\n"
+           "########################################################\n\n");
 }
-
