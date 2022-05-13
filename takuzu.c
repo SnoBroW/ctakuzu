@@ -262,7 +262,7 @@ bool isValid(GAME game, int posx, int posy, short proposition) {
     }
 
     for (int i = 0; i < game.size; ++i) {
-        if((i == posy) && (memcmp(game.grid[i], game.grid[posy], sizeof(CASE) * game.size) != 0)) {
+        if((i == posy) && (memcmp(rotatedGrid[i], rotatedGrid[posy], sizeof(CASE) * game.size) != 0)) {
             rule3 = false;
         }
     }

@@ -11,11 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d6c9438-e718-4874-be1c-899e24f7d164" name="Changes" comment="CA SEGFAULT PLUS UHDGFQZUYHFZAGEFPOIUSHRBEGGPIUYSERGVPOIUYFGBSEDG">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/io.c" beforeDir="false" afterPath="$PROJECT_DIR$/io.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/io.h" beforeDir="false" afterPath="$PROJECT_DIR$/io.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+    <list default="true" id="8d6c9438-e718-4874-be1c-899e24f7d164" name="Changes" comment="le menu va pas trop mal mais maintenant faut faire le solveur et je pense que ça ne va pas être de tout repos">
       <change beforePath="$PROJECT_DIR$/takuzu.c" beforeDir="false" afterPath="$PROJECT_DIR$/takuzu.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -242,7 +238,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652385566798</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="le menu va pas trop mal mais maintenant faut faire le solveur et je pense que ça ne va pas être de tout repos">
+      <created>1652427211417</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1652427211417</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -278,6 +281,7 @@
     <MESSAGE value="la passation" />
     <MESSAGE value="toujours segfault hein" />
     <MESSAGE value="CA SEGFAULT PLUS UHDGFQZUYHFZAGEFPOIUSHRBEGGPIUYSERGVPOIUYFGBSEDG" />
-    <option name="LAST_COMMIT_MESSAGE" value="CA SEGFAULT PLUS UHDGFQZUYHFZAGEFPOIUSHRBEGGPIUYSERGVPOIUYFGBSEDG" />
+    <MESSAGE value="le menu va pas trop mal mais maintenant faut faire le solveur et je pense que ça ne va pas être de tout repos" />
+    <option name="LAST_COMMIT_MESSAGE" value="le menu va pas trop mal mais maintenant faut faire le solveur et je pense que ça ne va pas être de tout repos" />
   </component>
 </project>
