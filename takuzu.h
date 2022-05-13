@@ -9,30 +9,32 @@
 #define TAKUZU_H
 
 
-struct COORDINATES {
+typedef struct {
     int posx;
     int posy;
-};
+} COORDINATES;
 
-typedef struct COORDINATES COORDINATES;
-
-struct CASE {
+typedef struct {
 
 	short content;
 	short mask;
 
     COORDINATES coords;
-};
+} CASE;
 
-typedef struct CASE CASE;
 typedef struct CASE** GRID;
 
-struct GAME {
+typedef struct {
 	GRID grid;
 	int size;
-};
+} GAME;
 
-typedef struct GAME GAME;
+typedef struct {
+    
+
+} MAILLON;
+
+
 
 
 
@@ -55,7 +57,7 @@ void freeGame(GAME * game);
 GAME initGame(GAME game, GRID grid);
 
 
-void solveGrid(GAME);
+void solveGrid(GRID);
 void generateMask(GAME);
 void generateGrid(GAME);
 

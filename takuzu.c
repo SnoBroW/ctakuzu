@@ -97,14 +97,8 @@ void freeGame(GAME * game) {
 
 
 
+void solveGrid(GRID grid) {
 
-
-void solveGrid(GAME game) {
-    for (int i = 0; i < game.size; i++) {
-        for (int j = 0; j < game.size; ++j) {
-
-        }
-    }
 }
 
 void generateMask(GAME game) {
@@ -117,7 +111,6 @@ void generateMask(GAME game) {
 
 
 void generateGrid(GAME game) {
-
 
 }
 
