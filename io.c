@@ -149,8 +149,7 @@ void mainMenu() {
                 game = createGame(inputSize());
                 switch (multiChoiceMenu(playElements, 5, true, true)) {
                     case 1:
-                        game.grid = createGridFromMatrix(game.size, grid1);
-                        printf("\n\n%s\n\n", isValidGrid(game.grid, game.size) ? "true" : "false");
+                        printf("WIP");
                         break;
                     case 2:
                         switch (game.size) {
@@ -197,7 +196,6 @@ void mainMenu() {
     }
 
 }
-
 
 void printBanner() {
     // j'étais obligé c'est trop cool

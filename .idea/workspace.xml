@@ -11,10 +11,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d6c9438-e718-4874-be1c-899e24f7d164" name="Changes" comment="isValidGrid marche sa daronne">
+    <list default="true" id="8d6c9438-e718-4874-be1c-899e24f7d164" name="Changes" comment="le commit de minuit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/io.c" beforeDir="false" afterPath="$PROJECT_DIR$/io.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/takuzu.c" beforeDir="false" afterPath="$PROJECT_DIR$/takuzu.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +139,8 @@
       <workItem from="1652382644259" duration="10634000" />
       <workItem from="1652430457842" duration="1000" />
       <workItem from="1652430938562" duration="1000" />
-      <workItem from="1652478748503" duration="1000" />
+      <workItem from="1652478748503" duration="22000" />
+      <workItem from="1652562911154" duration="4103000" />
     </task>
     <task id="LOCAL-00001" summary="1st commit">
       <created>1651792718080</created>
@@ -275,7 +275,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652458774983</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="le commit de minuit">
+      <created>1652478762310</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1652478762310</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -292,7 +299,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/dev" />
+                        <option value="github/dev" />
                       </list>
                     </value>
                   </entry>
@@ -315,6 +322,7 @@
     <MESSAGE value="la même sauf que j'avais oublié de changer un truc dans fonction débile avec la matrice qui tourne là" />
     <MESSAGE value="added 16x16 ez" />
     <MESSAGE value="isValidGrid marche sa daronne" />
-    <option name="LAST_COMMIT_MESSAGE" value="isValidGrid marche sa daronne" />
+    <MESSAGE value="le commit de minuit" />
+    <option name="LAST_COMMIT_MESSAGE" value="le commit de minuit" />
   </component>
 </project>
