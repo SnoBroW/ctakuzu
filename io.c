@@ -139,7 +139,6 @@ int inputSize() {
 void mainMenu() {
 
     GAME game;
-    int size;
     char * mainElements[] = {"Jouer", "Résoudre", "Générer", "Quitter"};
     char * playElements[] = {"Mode de jeu:", "Masque manuel", "Masque aléatoire", "Entraînement", "Retour"};
 
@@ -149,7 +148,10 @@ void mainMenu() {
                 game = createGame(inputSize());
                 switch (multiChoiceMenu(playElements, 5, true, true)) {
                     case 1:
-                        printf("WIP");
+                        game.grid = createGridFromMatrix(game.size, gridTest);
+                        printGrid(game, 0);
+                        printf("%s\n", isValidGrid(game.grid, game.size) ? "true" : "false");
+                        solveGrid(game);
                         break;
                     case 2:
                         switch (game.size) {
@@ -165,6 +167,7 @@ void mainMenu() {
                         }
 
                         generateMask(game);
+
                         printf("Masque:\n");
                         printGrid(game, 1);
 
@@ -172,7 +175,17 @@ void mainMenu() {
                         freeGame(&game);
                         break;
                     case 3:
-                        game.grid = createGridFromMatrix(game.size, grid1);
+                        switch (game.size) {
+                            case 4:
+                                game.grid = createGridFromMatrix(game.size, grid1);
+                                break;
+                            case 8:
+                                game.grid = createGridFromMatrix(game.size, grid2);
+                                break;
+                            case 16:
+                                game.grid = createGridFromMatrix(game.size, grid3);
+                                break;
+                        }
 
                         generateMask(game);
 
