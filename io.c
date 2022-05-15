@@ -148,7 +148,7 @@ void mainMenu() {
                 game = createGame(inputSize());
                 switch (multiChoiceMenu(playElements, 5, true, true)) {
                     case 1:
-                        game.grid = createGridFromMatrix(game.size, gridTest);
+                        game.grid = createGridFromMatrix(game.size, unknownGrid);
                         printGrid(game, 0);
                         printf("%s\n", isValidGrid(game.grid, game.size) ? "true" : "false");
                         solveGrid(game);

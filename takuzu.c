@@ -281,8 +281,8 @@ bool isValidCoup(GAME game, int posx, int posy, short proposition) {
 
 bool isValidGrid(GRID grid, int size) {
     bool rule1 = true, rule2 = true, rule3 = true;
-    short ** rotatedGrid;
-    int cpt = 0, cpt0 = 0, cpt1 = 0;
+    short ** rotatedGrid, lastContent = -1;
+    int cpt = 0, cpt0 = 0, cpt1 = 0, cptUk = 0;
 
     rotatedGrid = malloc(size * size * sizeof(short));
     for (int i = 0; i < size; ++i) {
@@ -301,15 +301,15 @@ bool isValidGrid(GRID grid, int size) {
                 cpt0++;
             }
             else {
-                cpt0++;
-                cpt1++;
+                cptUk++;
             }
         }
-        if(cpt1 != cpt0) {
+        if(cpt1 != cpt0 && !cptUk) {
             rule1 = false;
         }
         cpt0 = 0;
         cpt1 = 0;
+        cptUk = 0;
     }
 
 
@@ -323,19 +323,16 @@ bool isValidGrid(GRID grid, int size) {
                 cpt0++;
             }
             else {
-                cpt0++;
-                cpt1++;
+                cptUk++;
             }
         }
-        if(cpt1 != cpt0) {
+        if(cpt1 != cpt0 && !cptUk) {
             rule1 = false;
         }
         cpt0 = 0;
         cpt1 = 0;
+        cptUk = 0;
     }
-
-    cpt0 = 0;
-    cpt1 = 0;
 
     for (int i = 0; i < size; ++i) {
         for (int j = 0; j < size; ++j) {
@@ -384,19 +381,30 @@ bool isValidGrid(GRID grid, int size) {
 
 
     for (int i = 0; i < size; ++i) {
+        for (int j = 0; j < size; ++j) {
+            if(grid[i][j].content == -1) {
+                cptUk++;
+            }
+        }
         for (int j = i; j < size; ++j) {
-            if(i != j && memcmp(grid[i], grid[j], sizeof(CASE) * size) == 0) {
+            if(i != j && memcmp(grid[i], grid[j], sizeof(CASE) * size) == 0 && cptUk) {
                 rule3 = false;
             }
         }
     }
 
     for (int i = 0; i < size; ++i) {
+        for (int j = 0; j < size; ++j) {
+            if(rotatedGrid[i][j] == -1) {
+                cptUk++;
+            }
+        }
         for (int j = i; j < size; ++j) {
-            if(i != j && memcmp(rotatedGrid[i], rotatedGrid[j], sizeof(CASE) * size) == 0) {
+            if(i != j && memcmp(rotatedGrid[i], rotatedGrid[j], sizeof(CASE) * size) == 0 && !cptUk) {
                 rule3 = false;
             }
         }
+        cptUk = 0;
     }
 
     for (int i = 0; i < size; ++i) {
