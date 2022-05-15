@@ -514,12 +514,16 @@ POSLINK * initUnknownList(GAME game) {
     return list;
 }
 
-COORDINATES drawRandomPosition(POSLL list, int random) {
+POSLINK * drawRandomPosition(POSLL list, int random) {
     POSLL tmp = list;
     for (int i = 0; i < random; ++i) {
-        tmp = tmp->next;
+        if(tmp->id == random - 1) {
+            return tmp;
+        }
+        else if(tmp->next != NULL) {
+            tmp = tmp->next;
+        }
     }
-    return tmp->coords;
 }
 
 int getUnknownListSize(POSLL list) {

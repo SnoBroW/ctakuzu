@@ -84,18 +84,20 @@ void playGame(GAME game) {
 
 void solveGrid(GAME game) {
     POSLL list = initUnknownList(game);
-    COORDINATES random;
+    POSLINK * random;
 
     bool solved = false;
 
     while(!solved) {
 
-        random = drawRandomPosition(list, rand() % getUnknownListSize(list));
+        int draw = (rand() % getUnknownListSize(list)) + 1;
+        random = drawRandomPosition(list, draw);
+        printf("%d ", draw);
+        printf("| %d - %d %d\n", random->id, random->coords.posy, random->coords.posx);
+        popUnknown(list, draw);
 
         if(isValidGrid(game.grid, game.size) && getUnknownListSize(list) == 0) {
             solved = true;
         }
     }
-
-
 }

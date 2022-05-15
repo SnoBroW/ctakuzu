@@ -11,13 +11,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d6c9438-e718-4874-be1c-899e24f7d164" name="Changes" comment="isValidGrid fonctionne salement, genre avec les -1 et tout si si je te jure wallah">
+    <list default="true" id="8d6c9438-e718-4874-be1c-899e24f7d164" name="Changes" comment="faire la LLC du solveur et on est bons&#10;monkey mode">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game.c" beforeDir="false" afterPath="$PROJECT_DIR$/game.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game.h" beforeDir="false" afterPath="$PROJECT_DIR$/game.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grids.h" beforeDir="false" afterPath="$PROJECT_DIR$/grids.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/io.c" beforeDir="false" afterPath="$PROJECT_DIR$/io.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/takuzu.c" beforeDir="false" afterPath="$PROJECT_DIR$/takuzu.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/takuzu.h" beforeDir="false" afterPath="$PROJECT_DIR$/takuzu.h" afterDir="false" />
     </list>
@@ -148,7 +144,7 @@
       <workItem from="1652478748503" duration="22000" />
       <workItem from="1652562911154" duration="4151000" />
       <workItem from="1652609330837" duration="7152000" />
-      <workItem from="1652617970950" duration="17163000" />
+      <workItem from="1652617970950" duration="20444000" />
     </task>
     <task id="LOCAL-00001" summary="1st commit">
       <created>1651792718080</created>
@@ -318,7 +314,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652621791688</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="faire la LLC du solveur et on est bons&#10;monkey mode">
+      <created>1652635639768</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1652635639768</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -361,6 +364,7 @@
     <MESSAGE value="le commit de minuit" />
     <MESSAGE value="naze" />
     <MESSAGE value="isValidGrid fonctionne salement, genre avec les -1 et tout si si je te jure wallah" />
-    <option name="LAST_COMMIT_MESSAGE" value="isValidGrid fonctionne salement, genre avec les -1 et tout si si je te jure wallah" />
+    <MESSAGE value="faire la LLC du solveur et on est bons&#10;monkey mode" />
+    <option name="LAST_COMMIT_MESSAGE" value="faire la LLC du solveur et on est bons&#10;monkey mode" />
   </component>
 </project>

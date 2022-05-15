@@ -81,7 +81,8 @@ void popTailMove(MOVELL list);
 void printMoves(MOVELL list);
 
 POSLINK * initUnknownList(GAME game);
-COORDINATES drawRandomPosition(POSLL list, int temp);
+POSLINK * drawRandomPosition(POSLL list, int random);
+void popUnknown(POSLL list, int id);
 int getUnknownListSize(POSLL list);
 void printUnknown(POSLL list);
 
