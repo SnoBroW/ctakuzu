@@ -1,7 +1,6 @@
 #include "takuzu.h"
 #include "util.h"
 #include "game.h"
-#include "grids.h"
 
 #include <stdbool.h>
 #include <string.h>
@@ -46,7 +45,7 @@ void inputCoordinates(COORDINATES * coords) {
     strtok(buf, "\n");
     strtok(buf, " ");
 
-    if(strlen(buf) < 2) {
+    if(strlen(buf) != 2) {
         valid = false;
     }
 
@@ -109,8 +108,7 @@ int multiChoiceMenu(char * elements[], int size, bool title, bool retour) {
 
     printf("\n>\t");
     choice = (fgetc(stdin) - '0');
-    getchar();
-    fflush(stdin); // pas censé marcher mais ça marche
+    getchar(); //je suis obligé de faire ça parce que sinon ça met le bazar partout
     if((choice < size) && (choice >= 0)) {
         return choice;
     }
@@ -142,29 +140,18 @@ void mainMenu() {
     char * mainElements[] = {"Jouer", "Résoudre", "Générer", "Quitter"};
     char * playElements[] = {"Mode de jeu:", "Masque manuel", "Masque aléatoire", "Entraînement", "Retour"};
 
+    initRand();
+
     while(true) {
         switch(multiChoiceMenu(mainElements, 4, false, true)) {
             case 1:
                 game = createGame(inputSize());
                 switch (multiChoiceMenu(playElements, 5, true, true)) {
                     case 1:
-                        game.grid = createGridFromMatrix(game.size, unknownGrid);
-                        printGrid(game, 0);
-                        printf("%s\n", isValidGrid(game.grid, game.size) ? "true" : "false");
-                        solveGrid(game);
+                        printf("WIP\n");
                         break;
                     case 2:
-                        switch (game.size) {
-                            case 4:
-                                game.grid = createGridFromMatrix(game.size, grid1);
-                                break;
-                            case 8:
-                                game.grid = createGridFromMatrix(game.size, grid2);
-                                break;
-                            case 16:
-                                game.grid = createGridFromMatrix(game.size, grid3);
-                                break;
-                        }
+                        matchMatrixAndGridSize(&game);
 
                         generateMask(game);
 
@@ -175,17 +162,7 @@ void mainMenu() {
                         freeGame(&game);
                         break;
                     case 3:
-                        switch (game.size) {
-                            case 4:
-                                game.grid = createGridFromMatrix(game.size, grid1);
-                                break;
-                            case 8:
-                                game.grid = createGridFromMatrix(game.size, grid2);
-                                break;
-                            case 16:
-                                game.grid = createGridFromMatrix(game.size, grid3);
-                                break;
-                        }
+                        matchMatrixAndGridSize(&game);
 
                         generateMask(game);
 
@@ -196,9 +173,15 @@ void mainMenu() {
                         break;
                 }
                 break;
-
             case 2:
-                break;
+                game = createGame(inputSize());
+                matchMatrixAndGridSize(&game);
+                generateMask(game);
+                applyHolesInGrid(&game);
+
+                solveGrid(game);
+
+                freeGame(&game);
             case 3:
                 break;
             case 0:

@@ -1,5 +1,8 @@
 #include <string.h>
+
+
 #include "takuzu.h"
+#include "grids.h"
 
 
 
@@ -33,6 +36,22 @@ GRID createGridFromMatrix(int size, short matrix[size][size]) {
         }
     }
     return grid;
+}
+
+
+
+void matchMatrixAndGridSize(GAME * game) {
+    switch (game->size) {
+        case 4:
+            game->grid = createGridFromMatrix(game->size, grid1);
+            break;
+        case 8:
+            game->grid = createGridFromMatrix(game->size, grid2);
+            break;
+        case 16:
+            game->grid = createGridFromMatrix(game->size, grid3);
+            break;
+    }
 }
 
 
@@ -89,25 +108,16 @@ void freeGame(GAME * game) {
     freeGrid(&game->grid, game->size);
 }
 
-
-
-void solveGrid(GAME game) {
-    GRID grid = malloc(game.size * sizeof(CASE *));
-    for (int i = 0; i < game.size; ++i) {
-        grid[i] = malloc(game.size * sizeof(CASE));
-        for (int j = 0; j < game.size; ++j) {
-            grid[i][j].content = game.grid[i][j].content;
-            grid[i][j].mask = game.grid[i][j].mask;
-            grid[i][j].coords.posx = i;
-            grid[i][j].coords.posy = j;
+void applyHolesInGrid(GAME * game) {
+    for (int i = 0; i < game->size; ++i) {
+        for (int j = 0; j < game->size; ++j) {
+            if(!(game->grid[i][j].mask)) {
+                game->grid[i][j].content = -1;
+            }
         }
     }
-
-
-
-
-    freeGrid(&grid, game.size);
 }
+
 
 void generateMask(GAME game) {
     for (int i = 0; i < game.size; i++) {
@@ -117,10 +127,10 @@ void generateMask(GAME game) {
     }
 }
 
-
 void generateGrid(GAME game) {
 
 }
+
 
 CASE getCaseByPos(GAME game, int posx, int posy) {
     for (int i = 0; i < game.size; ++i) {
@@ -154,7 +164,7 @@ void printRule(bool rule1, bool rule2, bool rule3) {
 }
 
 
-bool isValidCoup(GAME game, int posx, int posy, short proposition) {
+bool isValidMove(GAME game, int posx, int posy, short proposition) {
     
     if (!isInGrid(game.size, posx, posy)) {
         return false;
@@ -312,8 +322,6 @@ bool isValidGrid(GRID grid, int size) {
         cptUk = 0;
     }
 
-
-
     for (int i = 0; i < size; ++i) {
         for (int j = 0; j < size; ++j) {
             if(rotatedGrid[i][j] == 1){
@@ -379,7 +387,6 @@ bool isValidGrid(GRID grid, int size) {
         cpt1 = 0;
     }
 
-
     for (int i = 0; i < size; ++i) {
         for (int j = 0; j < size; ++j) {
             if(grid[i][j].content == -1) {
@@ -422,40 +429,34 @@ bool isValidGrid(GRID grid, int size) {
 // 3- lines cant be the same
 
 
-COUP * initListCoup(PROPOSITION proposotion) {
-    LL list = NULL;
-    COUP * coup = malloc(sizeof(COUP));
-    coup->proposotion = proposotion;
-    coup->next = NULL;
-    list = coup;
+MOVELINK * initMoveList(MOVE move) {
+    MOVELL list = malloc(sizeof(MOVELINK));
+    list->proposotion = move;
+    list->next = NULL;
     return list;
 }
 
-void appendCoup(PROPOSITION proposotion, LL list) {
-    COUP * coup = malloc(sizeof(COUP));
-    coup->proposotion = proposotion;
+void appendMove(MOVE move, MOVELL list) {
+    MOVELINK * coup = malloc(sizeof(MOVELINK));
+    coup->proposotion = move;
     coup->next = NULL;
-    if(list == NULL) {
-        list = coup;
+
+    MOVELINK * tmp = list;
+    while(tmp->next != NULL) {
+        tmp = tmp->next;
     }
-    else {
-        COUP * tmp = list;
-        while(tmp->next != NULL) {
-            tmp = tmp->next;
-        }
-        tmp->next = coup;
-    }
+    tmp->next = coup;
 }
 
-void popTailCoup(LL list) {
+void popTailMove(MOVELL list) {
     if(list != NULL) {
         if(list->next == NULL) {
             free(list);
             list = NULL;
         }
         else {
-            COUP * tmp = list;
-            COUP * ptmp = NULL;
+            MOVELINK * tmp = list;
+            MOVELINK * ptmp = NULL;
             while(tmp->next != NULL) {
                 ptmp = tmp;
                 tmp = tmp->next;
@@ -466,10 +467,92 @@ void popTailCoup(LL list) {
     }
 }
 
+void freeMoveList();
+
+
 // only for debug
-void printCoups(LL list) {
+void printMoves(MOVELL list) {
     while(list != NULL) {
         printf("%d @ %d %d\n", list->proposotion.content, list->proposotion.coords.posx, list->proposotion.coords.posy);
+        list = list->next;
+    }
+}
+
+POSLINK * initUnknownList(GAME game) {
+    POSLL list = malloc(sizeof(POSLINK));
+    POSLL next;
+
+    int id = 0;
+
+    list->next = NULL;
+    list->id = id;
+
+    for (int i = 0; i < game.size; ++i) {
+        for (int j = 0; j < game.size; ++j) {
+            if(game.grid[i][j].content == -1) {
+                if(id == 0) {
+                    list->coords = game.grid[i][j].coords;
+                    id++;
+                }
+                else {
+                    POSLL tmp = list;
+
+                    next = malloc(sizeof(POSLINK));
+                    next->coords = game.grid[i][j].coords;
+                    next->next = NULL;
+                    next->id = id++;
+
+                    while (tmp->next != NULL) {
+                        tmp = tmp->next;
+                    }
+                    tmp->next = next;
+                }
+            }
+        }
+    }
+
+    return list;
+}
+
+COORDINATES drawRandomPosition(POSLL list, int random) {
+    POSLL tmp = list;
+    for (int i = 0; i < random; ++i) {
+        tmp = tmp->next;
+    }
+    return tmp->coords;
+}
+
+int getUnknownListSize(POSLL list) {
+    POSLL tmp = list;
+    while(tmp->next != NULL) {
+        tmp = tmp->next;
+    }
+    return tmp->id + 1;
+}
+
+void popUnknown(POSLL list, int id) {
+    POSLL tmp = list, prev;
+
+    if(tmp != NULL && tmp->id == id) {
+        list = tmp->next;
+        free(tmp);
+        return;
+    }
+
+    while(tmp != NULL && tmp->id != id) {
+        prev = tmp;
+        tmp = tmp->next;
+    }
+
+    prev->next = tmp->next;
+    free(tmp);
+}
+
+
+// only for debug
+void printUnknown(POSLL list) {
+    while(list != NULL) {
+        printf("%d - %d %d\n", list->id, list->coords.posy, list->coords.posx);
         list = list->next;
     }
 }

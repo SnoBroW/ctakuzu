@@ -17,12 +17,12 @@ struct COORDINATES {
 
 typedef struct COORDINATES COORDINATES;
 
-struct PROPOSITION {
+struct MOVE {
     COORDINATES coords;
     short content;
 };
 
-typedef struct PROPOSITION PROPOSITION;
+typedef struct MOVE MOVE;
 
 struct CASE {
 	short content;
@@ -40,56 +40,49 @@ struct GAME{
 
 typedef struct GAME GAME;
 
-struct COUP{
-    PROPOSITION proposotion;
-    struct COUP* next;
+struct MOVELINK{
+    MOVE proposotion;
+    struct MOVELINK* next;
 };
 
-typedef struct COUP COUP;
-typedef struct COUP* LL;
+typedef struct MOVELINK MOVELINK;
+typedef struct MOVELINK* MOVELL;
 
-struct LOTO {
+struct POSLINK {
     COORDINATES coords;
-    struct LOTO* next;
+    struct POSLINK* next;
+	int id;
 };
 
-typedef struct LOTO LOTO;
+typedef struct POSLINK POSLINK;
+typedef struct POSLINK* POSLL;
 
 
 GRID createGrid(int size);
 GRID createGridFromMatrix(int size, short matrix[size][size]);
-
+void matchMatrixAndGridSize(GAME * game);
 void freeGrid(GRID * matrix, int size);
-
 void printGrid(GAME game, int field);
-// Field designates the field to print
-// 0: content
-// 1: mask
-
 void printCase(CASE toPrint);
-
 GAME createGame(int size);
 void freeGame(GAME * game);
-
-GAME initGame(GAME game, GRID grid);
-
-
-void solveGrid(GAME);
-void generateMask(GAME);
-void generateGrid(GAME);
-
+void applyHolesInGrid(GAME * game);
+void solveGrid(GAME game);
+void generateMask(GAME game);
+void generateGrid(GAME game);
 CASE getCaseByPos(GAME game, int posx, int posy);
-
-bool isValidCoup(GAME game, int posx, int posy, short proposition);
-bool isValidGrid(GRID grid, int size);
 bool isInGrid(int size, int posx, int posy);
+void printRule(bool rule1, bool rule2, bool rule3);
+bool isValidMove(GAME game, int posx, int posy, short proposition);
+bool isValidGrid(GRID grid, int size);
+MOVELINK * initMoveList(MOVE move);
+void appendMove(MOVE move, MOVELL list);
+void popTailMove(MOVELL list);
+void printMoves(MOVELL list);
 
-
-COUP * initListCoup(PROPOSITION proposotion);
-void appendCoup(PROPOSITION proposotion, LL list);
-void popTailCoup(LL list);
-void printCoups(LL list);
-
-
+POSLINK * initUnknownList(GAME game);
+COORDINATES drawRandomPosition(POSLL list, int temp);
+int getUnknownListSize(POSLL list);
+void printUnknown(POSLL list);
 
 #endif

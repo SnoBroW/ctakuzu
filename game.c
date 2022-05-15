@@ -13,12 +13,9 @@ void playGame(GAME game) {
     short proposition, lives = 3;
     int size = game.size;
 
-    while(!(filled || !lives)) {
-        
-        valid = true;
+    while(!(!lives || filled)) {
 
-        // FAIRE SAISIE SECURISEE AVEC ISINGRID()
-        // STP OUBLIE PAS
+        valid = true;
 
         printLives(lives);
         displayGrid(game, true, '.');
@@ -29,14 +26,18 @@ void playGame(GAME game) {
             valid = false;
         }
 
-        if(game.grid[coords.posy][coords.posx].mask != 0) {
+        if(valid && !isInGrid(game.size, coords.posx, coords.posy)) {
+            valid = false;
+        }
+
+        if(valid && game.grid[coords.posy][coords.posx].mask != 0) {
             valid = false;
         }
 
         if(valid) {
             printf("\nProposition ?");
             proposition = inputContent();
-            if(isValidCoup(game, coords.posy, coords.posx, proposition)) {
+            if(isValidMove(game, coords.posy, coords.posx, proposition)) {
                 if(proposition == game.grid[coords.posy][coords.posx].content) {
                 game.grid[coords.posy][coords.posx].content = proposition;
                 game.grid[coords.posy][coords.posx].mask = 1;
@@ -49,7 +50,7 @@ void playGame(GAME game) {
                 printf("\n\nCoup invalide !\n");
                 lives--;
             }
-        } 
+        }
         else {
             printf("\nErreur, position invalide.\n");
         }
@@ -71,12 +72,30 @@ void playGame(GAME game) {
     }
 
     if(filled) {
-        printf("\nVous avez gagné!\n\n");
+        printf("\nVous avez gagné !\n\n");
     }
     else if(lives == 0) {
-        printf("\nVous n'avez plus de vies\nDommage!\n\n");
+        printf("\nVous n'avez plus de vies\nPerdu !\n\n");
     }
     else {
         printf("\nCela n'est pas censé se produire veuillez contacter l'administration\n\n");
     }
+}
+
+void solveGrid(GAME game) {
+    POSLL list = initUnknownList(game);
+    COORDINATES random;
+
+    bool solved = false;
+
+    while(!solved) {
+
+        random = drawRandomPosition(list, rand() % getUnknownListSize(list));
+
+        if(isValidGrid(game.grid, game.size) && getUnknownListSize(list) == 0) {
+            solved = true;
+        }
+    }
+
+
 }

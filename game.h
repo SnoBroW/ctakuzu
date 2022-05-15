@@ -6,6 +6,7 @@
 
 
 void playGame(GAME game);
+void solveGrid(GAME game);
 
 
 #endif
