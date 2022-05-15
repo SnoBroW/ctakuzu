@@ -6,6 +6,12 @@
 #include <string.h>
 
 
+
+// ctakuzu - io.c
+// Albane Coiffe, Gabriel Durieux
+// regroupe toutes les fonctions d'entrée/sortie/menu
+
+
 void displayGrid(GAME game, bool helper, char none) {
     printf("\n");
     if(helper) {
@@ -174,6 +180,8 @@ void mainMenu() {
                 }
                 break;
             case 2:
+                printf("\nATTENTION, FONCTIONALITÉ EN DEVELOPPEMENT");
+
                 game = createGame(inputSize());
                 matchMatrixAndGridSize(&game);
                 generateMask(game);
@@ -183,6 +191,7 @@ void mainMenu() {
 
                 freeGame(&game);
             case 3:
+                printf("\nWIP");
                 break;
             case 0:
                 printf("\nSortie...\n\n");

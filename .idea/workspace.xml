@@ -11,11 +11,18 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d6c9438-e718-4874-be1c-899e24f7d164" name="Changes" comment="faire la LLC du solveur et on est bons&#10;monkey mode">
+    <list default="true" id="8d6c9438-e718-4874-be1c-899e24f7d164" name="Changes" comment="bordel">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game.c" beforeDir="false" afterPath="$PROJECT_DIR$/game.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.h" beforeDir="false" afterPath="$PROJECT_DIR$/game.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grids.h" beforeDir="false" afterPath="$PROJECT_DIR$/grids.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/io.c" beforeDir="false" afterPath="$PROJECT_DIR$/io.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/io.h" beforeDir="false" afterPath="$PROJECT_DIR$/io.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/takuzu.c" beforeDir="false" afterPath="$PROJECT_DIR$/takuzu.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/takuzu.h" beforeDir="false" afterPath="$PROJECT_DIR$/takuzu.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util.c" beforeDir="false" afterPath="$PROJECT_DIR$/util.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util.h" beforeDir="false" afterPath="$PROJECT_DIR$/util.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +151,7 @@
       <workItem from="1652478748503" duration="22000" />
       <workItem from="1652562911154" duration="4151000" />
       <workItem from="1652609330837" duration="7152000" />
-      <workItem from="1652617970950" duration="20444000" />
+      <workItem from="1652617970950" duration="28763000" />
     </task>
     <task id="LOCAL-00001" summary="1st commit">
       <created>1651792718080</created>
@@ -321,7 +328,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652635639768</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="bordel">
+      <created>1652638743092</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1652638743093</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -365,6 +379,7 @@
     <MESSAGE value="naze" />
     <MESSAGE value="isValidGrid fonctionne salement, genre avec les -1 et tout si si je te jure wallah" />
     <MESSAGE value="faire la LLC du solveur et on est bons&#10;monkey mode" />
-    <option name="LAST_COMMIT_MESSAGE" value="faire la LLC du solveur et on est bons&#10;monkey mode" />
+    <MESSAGE value="bordel" />
+    <option name="LAST_COMMIT_MESSAGE" value="bordel" />
   </component>
 </project>

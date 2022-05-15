@@ -4,6 +4,9 @@
 #include "takuzu.h"
 #include "grids.h"
 
+// ctakuzu - takuzu.c
+// Albane Coiffe, Gabriel Durieux
+// regroupe toutes les fonctions principales du takuzu
 
 
 GRID createGrid(int size) {
@@ -122,14 +125,11 @@ void applyHolesInGrid(GAME * game) {
 void generateMask(GAME game) {
     for (int i = 0; i < game.size; i++) {
         for (int j = 0; j < game.size; ++j) {
-            (*(game.grid + i) + j)->mask = (short) getRandom();
+            (*(game.grid + i) + j)->mask = (short) getRandomBit();
         }
     }
 }
 
-void generateGrid(GAME game) {
-
-}
 
 
 CASE getCaseByPos(GAME game, int posx, int posy) {
@@ -517,21 +517,27 @@ POSLINK * initUnknownList(GAME game) {
 POSLINK * drawRandomPosition(POSLL list, int random) {
     POSLL tmp = list;
     for (int i = 0; i < random; ++i) {
-        if(tmp->id == random - 1) {
-            return tmp;
-        }
-        else if(tmp->next != NULL) {
-            tmp = tmp->next;
-        }
+        tmp = tmp->next;
+    }
+    if(tmp != NULL && tmp->id == random) {
+        return tmp;
+    }
+    else {
+        return NULL;
     }
 }
 
 int getUnknownListSize(POSLL list) {
     POSLL tmp = list;
+    int size = 1;
+    if(tmp == NULL) {
+        return 0;
+    }
     while(tmp->next != NULL) {
         tmp = tmp->next;
+        size++;
     }
-    return tmp->id + 1;
+    return size;
 }
 
 void popUnknown(POSLL list, int id) {
@@ -548,6 +554,10 @@ void popUnknown(POSLL list, int id) {
         tmp = tmp->next;
     }
 
+    if(tmp == NULL) {
+        return;
+    }
+
     prev->next = tmp->next;
     free(tmp);
 }
@@ -560,3 +570,5 @@ void printUnknown(POSLL list) {
         list = list->next;
     }
 }
+
+

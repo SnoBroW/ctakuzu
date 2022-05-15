@@ -1,6 +1,14 @@
 #ifndef PROJET_C_L1_GRIDS_H
 #define PROJET_C_L1_GRIDS_H
 
+
+
+// ctakuzu - grids.h
+// Albane Coiffe, Gabriel Durieux
+// les grilles entrées en dur
+
+
+
  short grid1[4][4] = {
         {1,0,0,1},
         {1,0,1,0},

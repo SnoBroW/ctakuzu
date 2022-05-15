@@ -5,6 +5,13 @@
 #include <stdbool.h>
 #include <string.h>
 
+
+// ctakuzu - game.c
+// Albane Coiffe, Gabriel Durieux
+// regroupe toutes les fonctionalités
+
+
+
 void playGame(GAME game) {
 
     COORDINATES coords;
@@ -83,21 +90,41 @@ void playGame(GAME game) {
 }
 
 void solveGrid(GAME game) {
-    POSLL list = initUnknownList(game);
-    POSLINK * random;
-
+    POSLL list = initUnknownList(game), random = list;
+    int draw, size = getUnknownListSize(list);
     bool solved = false;
 
     while(!solved) {
 
-        int draw = (rand() % getUnknownListSize(list)) + 1;
-        random = drawRandomPosition(list, draw);
-        printf("%d ", draw);
-        printf("| %d - %d %d\n", random->id, random->coords.posy, random->coords.posx);
-        popUnknown(list, draw);
+        draw = (rand() % size + 1);
 
-        if(isValidGrid(game.grid, game.size) && getUnknownListSize(list) == 0) {
+        random = drawRandomPosition(list, draw);
+
+        if(random != NULL) {
+            popUnknown(list, draw);
+            size--;
+        }
+        else {
+            printf("\nil y a un gros gros gros problème\nvoir ligne 101 de game.c");
+
+            // sur lequel je suis depuis des heures
+            // je ne comprends pas pourquoi après un nombre aléatoire d'itération
+            // ma valeur de retour devient NULL
+            // sans aucune raison
+            // la ligne suivante permet de sortir la boucle infinie, mais cette fonction ne marche pas
+
+            solved = true;
+        }
+
+        if(size == 0) {
             solved = true;
         }
     }
+}
+
+
+
+
+void generateGrid(GAME game) {
+    return;
 }
